@@ -1,0 +1,22 @@
+stages:
+  - build
+  - deploy 
+image: node
+building-app:
+ stage: build
+ script:
+  #- apt update -y
+  #- apt install npm -y
+  - npm install
+  #- ls -l
+ artifacts:
+   paths:
+     - "node_modules"
+     - "package-lock.json"
+deploy-app:
+ stage: deploy
+ script:
+  #- apt update -y
+  #- apt install nodejs -y
+  #- hostname
+  - node index.js &
